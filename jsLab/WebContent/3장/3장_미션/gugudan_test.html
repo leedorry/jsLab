@@ -9,9 +9,20 @@
 	</center>
 	<table border=1 align=center width=800 height=280>
 		<tr>
-
 			<script language="javascript">
+				// 작성위치
+				for(var dan=2; dan<=9; dan++) {
+					document.write("<th>" + dan + "단" + "</th>");
+				}
 				
+				document.write("</tr><tr>");
+				for(var i=2; i<=9; i++){
+					document.write("<td>");
+					for (var k=1; k<=9; k++) {
+						document.write(i + "x" + k + "=" + i * k, "<br/>");
+					}
+					document.write("</td>");
+				}
 			</script>
 
 		</tr>
