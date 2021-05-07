@@ -4,34 +4,27 @@
 <title>lotto</title>
 <script type = "text/javascript">
 	function find() {
-		var lotto = new Array(6);
-		var count = 0;
-		var overl = true;
+		var lotto = new Array();
 		
-		while(count < 6){
-			var number = 0;
-			number = parseInt(Math.random()*45)+1;
-			
-			for(var i=0; i<count; i++){
-				if(lotto[i] == number){
-					overl = false;
+		for(var i=0; i<6; i++){
+			lotto[i] = Math.floor(Math.random()*45)+1;  // 1~45의 임의의 정수
+		
+			// 중복 검사
+			// lotto[0]=40, lotto[1]=32, lotto[2]=32
+			for(var j=0; j<i; j++){
+				if(lotto[i] == lotto[j]){
+					i--;
+					break;
 				}
 			}
-			
-			if(overl){
-				lotto[count] = number;
-				count++;
-			}
-			
-			overl = true;
 		}
 		
-		var lotto_text = lotto.sort();
-		document.write(lotto_text);
-		
-		/* document.write(lotto[0] + ',' + lotto[1] + ',' + lotto[2] + ',' + 
-	    lotto[3] + ',' + lotto[4] + ',' + lotto[5]);
-		 */
+		// 오름차순으로 정렬
+		lotto.sort(function(a,b){
+			return a-b;
+			// return b-a;  // 내림차순
+		});
+		document.write(lotto);
 		
 	}
 
