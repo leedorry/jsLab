@@ -6,16 +6,16 @@
 <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
 <script type="text/javascript">
 //<![CDATA[
-$(function(){
-
-
-
-
-
-
-
-
-});
+$(function() {
+		$("#btn").on({
+			"mouseover focus": function(){
+				$(this).css("background-color", "yellow");
+		},
+			"mouseout blur": function(){
+				$(this).css("background-color", "red");
+			}
+		});
+	});
 //]]>
 </script>
 </head>
