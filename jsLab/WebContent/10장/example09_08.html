@@ -24,17 +24,27 @@ td {
 			var sendData = 'username=' + username + '&passwd=' + passwd;
 			alert(sendData);
 
-			$.post( // 문자열 형식의 데이터를 welcome.jsp 파일로 보낸다.
+			$.ajax({
+				url: "welcome.jsp",
+				type: "post",
+				data: sendData,
+				success: function(msg){
+					$('#txt1').html(msg);					
+				}
+			});
+			return false;
+			
+			/* $.post( // 문자열 형식의 데이터를 welcome.jsp 파일로 보낸다.
 			"welcome.jsp", sendData, function(msg) {
 				$('#txt1').html(msg);
 			});
-			return false;
+			return false; */
 		});
 	});
 </script>
 </head>
 <body>
-	<form action="member.jsp" method="post" name="member" id="member">
+	<form action="welcome.jsp" method="post" name="member" id="member">
 		<fieldset>
 			<legend>회원가입</legend>
 			<p>
