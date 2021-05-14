@@ -41,7 +41,19 @@
 	href="css/DataTables/jquery.dataTables.min.css">
 <link rel="stylesheet" type="text/css"
 	href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
-
+<!-- 구글 세계 언어 선택 -->
+<script type="text/javascript">
+	function googleTranslateElementInit() {
+		new google.translate.TranslateElement({
+			pageLanguage : 'ko',
+			includedLanguages : 'en,ja,ko,zh-CN',
+			layout : google.translate.TranslateElement.InlineLayout.SIMPLE
+		}, 'google_translate_element');
+	}
+</script>
+<script type="text/javascript"
+	src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+</script>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 	<!-- Site wrapper -->
@@ -64,6 +76,7 @@
 
 				<div class="navbar-custom-menu">
 					<ul class="nav navbar-nav">
+						<li id="google_translate_element"></li>
 						<!-- Messages: style can be found in dropdown.less-->
 						<li class="dropdown messages-menu"><a href="#"
 							class="dropdown-toggle" data-toggle="dropdown"> <i
@@ -440,7 +453,8 @@
 							<table id="example" class="display" cellspacing="0" width="100%">
 								<thead>
 									<tr>
-										
+										<th>No</th>
+										<th>썸네일</th>
 										<th>제목</th>
 										<th>기자</th>
 										<th>날짜</th>
@@ -699,6 +713,8 @@
 					//alert(obj);
 
 					$.each(data.items, function(i, d) {
+						
+						var no = i + 1;
 						//var date=new Date(d["publishedDate"]); //뉴스 작성 날짜 객체 생성
 						var date = new Date(d["pubDate"]); //뉴스 작성 날짜 객체 생성
 						//작성한 년-월-일 형식으로 변수 m에 저장합니다.
@@ -710,8 +726,8 @@
 						var author = d["author"];
 						var lk = d["link"];
 						//앞서 구해온 데이터를 이용해 정보 목록 태그를 생성합니다.
-						$("tbody").append('<tr><td><img src="'+ img
-								+ '" width="50" height="50"><a href="'+lk+'" target="_blank">'
+						$("tbody").append('<tr><td>'+ no +'</td><td><img src="'+ img
+								+ '" width="50" height="50"></td><td><a href="'+lk+'" target="_blank">'
 								+ title+ '</a></td><td>'+ author+ '</td><td>'+ m+ '</td></tr>');
 					}); // “$.each” 메서드에 종료
 
